@@ -291,7 +291,7 @@ const FileDetail = ({ id, data }) => {
               <p className="font-weight-bold">
                 {/* File <br />
                 Assigned */}
-                tramites <br/> asignados
+                Tramites <br/> asignado
               </p>
             </div>
             <div className="col d-flex d-flex">
@@ -299,8 +299,8 @@ const FileDetail = ({ id, data }) => {
               <p className="font-weight-bold">
                 {/* File Under <br />
                 Review */}
-                Archivar bajo <br/>
-                Revisar
+                Tramite en <br/>
+                Revisión
               </p>
             </div>
 
@@ -309,7 +309,7 @@ const FileDetail = ({ id, data }) => {
               <p className="font-weight-bold">
                 {/* File <br />
                 Reviewed */}
-                Archivo <br/>
+                Tramite <br/>
                 Revisado
               </p>
             </div>
@@ -320,7 +320,7 @@ const FileDetail = ({ id, data }) => {
                 {/* File <br />
                 Approved */}
 
-                Archivo <br/>
+                Tramite <br/>
                 Aprobado
               </p>
             </div>
@@ -549,9 +549,9 @@ const FileDetail = ({ id, data }) => {
           </div>
         ) : (
           <div className="text-center my-5">
-            <p className="m-0">Not Documentation added yet...</p>
+            <p className="m-0">Aún no se ha añadido documentación...</p>
             <Link className="btn btn-primary" href={"/files/verify/" + id}>
-              Add verifyDoc
+              Agregar verificarDoc
             </Link>
           </div>
         )}

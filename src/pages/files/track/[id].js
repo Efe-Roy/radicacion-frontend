@@ -168,7 +168,7 @@ const TrackProgress = ({ id, fileNum }) => {
   function onSubmit9(e) {
     e.preventDefault();
     console.log(formData9);
-    // dispatch(resolution({ formData9, toast, router, id }));
+    dispatch(resolution({ formData9, toast, router, id }));
   }
 
   const [formData10, setFormData10] = useState({

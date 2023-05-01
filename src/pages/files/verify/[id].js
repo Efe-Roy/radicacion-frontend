@@ -679,7 +679,7 @@ const VerifyFile = ({ id }) => {
 
             <br />
             <button type="submit" className="btn btn-primary my-2">
-              Submit
+              Enviar
             </button>
           </div>
         </form>
