@@ -160,6 +160,15 @@ export default function Home() {
             </div>
           </div>
 
+          
+        {/* <div>
+            This is the Homepage page - GeeksforGeeks
+            <h2>
+                Environment Variable :-
+                {process.env.NEXT_PUBLIC_BASE_URL}
+             </h2>
+        </div> */}
+
           <React.Fragment>
             {loading && (
               <div className="spinner-border" role="status">
