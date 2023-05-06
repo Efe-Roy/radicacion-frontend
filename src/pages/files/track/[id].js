@@ -21,7 +21,7 @@ import { BsFillCheckCircleFill } from "react-icons/bs";
 
 
 const TrackProgress = ({ id, fileNum }) => {
-  console.log("fileNum", fileNum)
+  // console.log("fileNum", fileNum)
   const router = useRouter();
   let dispatch = useDispatch();
 
@@ -33,7 +33,7 @@ const TrackProgress = ({ id, fileNum }) => {
     ...stateData.track,
   }));
 
-  console.log("resNum", resNum)
+  // console.log("resNum", resNum)
 
   const [formData, setFormData] = useState({
     underReview: false,
@@ -830,7 +830,8 @@ TrackProgress.getInitialProps = async ({ query }) => {
   // const res = await fetch('http://localhost:8000/api/resolution-num/');
   // const resNum = await res.json();
 
-  const resp = await fetch(`http://127.0.0.1:8000/api/filesii/${id}/`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/filesii/${id}/`)
+  // const resp = await fetch(`http://127.0.0.1:8000/api/filesii/${id}/`);
   const dataa = await resp.json();
 
   return { 

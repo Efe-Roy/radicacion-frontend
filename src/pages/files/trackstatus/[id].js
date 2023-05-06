@@ -421,10 +421,12 @@ const TrackStatus = ({ data, id, dataValue }) => {
 TrackStatus.getInitialProps = async ({ query }) => {
   const { id } = query;
 
-  const resp = await fetch(`http://127.0.0.1:8000/api/track-detail/${id}/`);
+  const resp = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/track-detail/${id}/`)
+  // const resp = await fetch(`http://127.0.0.1:8000/api/track-detail/${id}/`);
   const data = await resp.json();
 
-  const res = await fetch(`http://127.0.0.1:8000/api/completed/${id}/`);
+  // const res = await fetch(`http://127.0.0.1:8000/api/completed/${id}/`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/completed/${id}/`)
   const dataValue = await res.json();
 
   return { id, data, dataValue };

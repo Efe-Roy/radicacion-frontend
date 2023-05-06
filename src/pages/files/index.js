@@ -7,20 +7,24 @@ import Link from "next/link";
 import Nav from "react-bootstrap/Nav";
 import Tab from "react-bootstrap/Tab";
 // import { getUserId } from "@/redux/features/authSlice";
+import { CSVLink} from 'react-csv';
 
-const File = () => {
+const File = ({data}) => {
 
   const { loading, error, files, unassigned_files } = useSelector(
     (stateData) => ({
       ...stateData.files,
     })
   );
-  
+
+  // console.log("allfiles", data)
+
   const { user, is_organisor, is_support, is_agent } = useSelector(
     (stateData) => ({
       ...stateData.auth,
     })
   );
+
 
   const column = [
     {
@@ -92,9 +96,30 @@ const File = () => {
 
     // console.log("brother bernard", files);
 
+
+    const headers = [
+      { label: "ID", key: "id" },
+      { label: "Radicado", key: "file_name" },
+      { label: "Tipo de solicitud", key: "file_type" },
+      { label: "Titular", key: "headline" },
+      { label: "fecha de creación", key: "file_date_added" },
+      { label: "Cedule/Pasaporte", key: "passport" },
+      { label: "Matricula Inmobiliaria", key: "estate_reg" },
+      { label: "Telefono y/o Celular", key: "phone_number" },
+      { label: "Correo Electronico", key: "email" },
+      { label: "Valor del certificado de delineacion", key: "value_delineation" },
+      { label: "Fecha del cerficado de delineación", key: "delineation_date" },
+      { label: "Numero de Comprobante de pago de delineación", key: "delineation_payment" },
+      { label: "consecutiva certificado delineación", key: "consecutive_delineation" },
+      { label: "Visitado por", key: "visited_by" },
+      { label: "Estado", key: "State_type" },
+      { label: "Datos de entrega de vallas publicitarias", key: "delivery_date" },
+      { label: "Fecha de notificación", key: "notification_date" }
+    ];
+    
+
   return (
     <Layout>
-      {/* <pre>{JSON.stringify(user)}</pre> */}
       <div className="container px-3">
         {is_support ? (
           <div className="text-center">
@@ -131,13 +156,23 @@ const File = () => {
               fixedHeaderScrollHeight="350px"
               actions={
                 <>
-                  {is_support ? (
-                    <Link
-                      href="/files/create"
-                      className="btn btn-sm btn-info text-white"
+                  {!is_agent ? (
+                    // <button
+                    //   className="btn btn-sm btn-info text-white"
+                    // >
+                    //   Crear nuevo tramite
+                    // </button>
+
+                    <CSVLink  
+                      data={ data } 
+                      headers={headers}
+                      filename="All The Files"  
+                      className="btn btn-success mb-3"
                     >
-                      Crear nuevo tramite
-                    </Link>
+                      {/* Export File Data */}
+                      Exportar archivo
+                      </CSVLink>
+
                   ) : (
                     ""
                   )}
@@ -162,6 +197,10 @@ const File = () => {
           <h1 className="text-center">No hay información</h1>
         )}
       </div>
+
+      {/* <CSVLink data={data} headers={headers}>
+      Download me
+    </CSVLink> */}
 
       {!is_agent ? (
         <Tab.Container
@@ -281,5 +320,17 @@ const File = () => {
     </Layout>
   );
 };
+
+export async function getServerSideProps(context) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/all-files`)
+  // const res = await fetch("http://127.0.0.1:8000/api/all-files")
+  const data = await res.json()
+
+  return {
+    props: {
+      data,
+    },
+  }
+}
 
 export default File;

@@ -5,6 +5,7 @@ const initialState = {
   fileById: null,
   verifyy: null,
   file_num: null,
+  // allfiles: null,
   files: null,
   unassigned_files: null,
   user: null,
@@ -206,6 +207,7 @@ const fileSlice = createSlice({
       .addCase(getFiles.fulfilled, (state, action) => {
         state.loading = false;
         state.files = action.payload?.files;
+        // state.allfiles = action.payload?.all_files;
         state.unassigned_files = action.payload?.unassigned_files;
         state.file_num = action.payload?.fileNum;
         state.profile_id = action.payload?.user_profile;

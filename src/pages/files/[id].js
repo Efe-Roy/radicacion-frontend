@@ -560,11 +560,6 @@ const FileDetail = ({ id, data }) => {
   );
 }
 
-// FileDetail.getInitialProps = async ({ query }) => {
-//   const { id } = query;
-//   return { id };
-// };
-
 FileDetail.getInitialProps = async ({ query }) => {
   const { id } = query;
 

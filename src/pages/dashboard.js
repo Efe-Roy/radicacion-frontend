@@ -12,21 +12,20 @@ import {
 import { useSelector } from 'react-redux';
 import { Chart } from "react-google-charts";
 
-export const data = [
-  ["Task", "Hours per Day"],
-  ["Work", 11],
-  ["Eat", 2],
-  ["Commute", 2],
-  ["Watch TV", 2],
-  ["Sleep", 7],
-];
-export const options = {
-  title: "My Daily Activities",
-};
+// export const data = [
+//   ["Task", "Hours per Day"],
+//   ["Work", 11],
+//   ["Eat", 2],
+//   ["Commute", 2],
+//   ["Watch TV", 2],
+// ];
+// export const options = {
+//   title: "My Daily Activities",
+// };
 
 
 
-const Dashboard = () => {
+const Dashboard = ({datag}) => {
   const { files, unassigned_files } = useSelector(
     (stateData) => ({
       ...stateData.files,
@@ -48,6 +47,18 @@ const Dashboard = () => {
   },[])
 
   // console.log("sis beh", files?.length + unassigned_files?.length)
+
+  const data = [
+    ["Task", "Total Summary"],
+    ["Total de tramites", datag?.length],
+    ["Archivados", 0],
+    ["Sin asignar", unassigned_files?.length],
+    ["Asignados", files?.length],
+  ];
+  const options = {
+    title: "Resumen de todo",
+  };
+  
 return (
   <Layout>
     <div className="px-4">
@@ -62,7 +73,7 @@ return (
             <MdInventory2 />
           </div>
           <span className="text-secondary fw-bold">
-            {files?.length + unassigned_files?.length}
+            {datag?.length}
           </span>
         </div>
 
@@ -103,6 +114,18 @@ return (
     </div>
   </Layout>
 );
+};
+
+export async function getServerSideProps(context) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/all-files`)
+  // const res = await fetch("http://127.0.0.1:8000/api/all-files")
+  const datag = await res.json()
+
+  return {
+    props: {
+      datag,
+    },
+  }
 }
 
 export default Dashboard

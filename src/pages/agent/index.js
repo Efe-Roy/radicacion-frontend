@@ -149,7 +149,7 @@ const Agent = () => {
             <form onSubmit={onSubmit} className="px-md-5 px-2">
               <div className="form-group py-2">
                 <div className="input-field">
-                  <label htmlFor="" className="col-2 col-form-label">
+                  <label htmlFor="" className="col-form-label">
                   Nombre de usuario:
                   </label>
                   <input
@@ -174,7 +174,7 @@ const Agent = () => {
               </div>
               <div className="form-group py-2">
                 <div className="input-field">
-                  <label htmlFor="" className="col-2 col-form-label">
+                  <label htmlFor="" className="col-form-label">
                   Correo electrónico:
                   </label>
                   <input
@@ -189,7 +189,7 @@ const Agent = () => {
               </div>
               <div className="form-group py-1 pb-2">
                 <div className="input-field">
-                  <label htmlFor="" className="col-2 col-form-label">
+                  <label htmlFor="" className="col-form-label">
                   Contraseña:
                   </label>
                   <input
