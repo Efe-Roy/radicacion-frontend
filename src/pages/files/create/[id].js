@@ -338,10 +338,10 @@ const FileUpdate = ({ id, data, datat }) => {
 FileUpdate.getInitialProps = async ({ query }) => {
     const { id } = query;
     
-    const res = await fetch("http://127.0.0.1:8000/api/file-type");
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/assign-retrieve/file-type`);
     const data = await res.json();
     
-    const resp = await fetch(`http://127.0.0.1:8000/api/filesii/${id}/`);
+    const resp = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/assign-retrieve/filesii/${id}/`);
     const datat = await resp.json();
 
     return {

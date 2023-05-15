@@ -359,10 +359,10 @@ const FileCreate = ({ ninjas, fileNum }) => {
 export default FileCreate;
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://127.0.0.1:8000/api/file-type");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/file-type`);
   const data = await res.json();
 
-  const ress = await fetch("http://127.0.0.1:8000/api/file-num");
+  const ress = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/file-num`);
   const dataa = await ress.json();
 
   return {

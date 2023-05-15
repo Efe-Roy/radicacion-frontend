@@ -77,7 +77,8 @@ const AssignAgent = ({ id, stars }) => {
 };
 
 AssignAgent.getInitialProps = async ({ query }) => {
-  const res = await fetch("http://127.0.0.1:8000/api/assign-retrieve/");
+  // const res = await fetch("http://127.0.0.1:8000/api/assign-retrieve/");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/assign-retrieve/`);
   const json = await res.json();
   
   const { id } = query;

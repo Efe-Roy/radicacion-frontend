@@ -7,7 +7,7 @@ const CheckItConfirm = ({ token, uidb64 }) => {
   const [message, setMessage] = React.useState(null)
   React.useEffect(() => {
     axios
-      .post(`http://localhost:8000/api/agent/activate/${uidb64}/${token}`)
+      .post(`${process.env.NEXT_PUBLIC_BASE_URL}/agent/activate/${uidb64}/${token}`)
       .then((response) => {
         console.log("Resposne Activate", response.data);
         setMessage(response.data)
