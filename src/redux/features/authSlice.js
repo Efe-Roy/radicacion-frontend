@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // import axios from "axios";
 import API from "../api";
+import cookie from 'js-cookie';
 
 const initialState = {
   user: null,
@@ -68,6 +69,8 @@ const authSlice = createSlice({
         .addCase(authLogin.fulfilled, (state, action) => {
             state.loading = false;
             localStorage.setItem("profile", JSON.stringify({ ...action.payload }));
+            const token = JSON.parse(localStorage.getItem('profile')).token;
+            cookie.set('token', token);
             state.user = action.payload;
         })
         .addCase(authLogin.rejected, (state, action) => {

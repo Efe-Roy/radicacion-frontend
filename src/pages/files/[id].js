@@ -563,7 +563,7 @@ const FileDetail = ({ id, data }) => {
 FileDetail.getInitialProps = async ({ query }) => {
   const { id } = query;
 
-  const resp = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/assign-retrieve//track-detail/${id}/`);
+  const resp = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/track-detail/${id}/`);
   const data = await resp.json();
 
   return {
